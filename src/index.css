@@ -117,7 +117,7 @@ code {
   border: 1px #ffc908 solid;
   margin-left: auto;
   margin-right: auto;
-  width: 100px;
+  width: 110px;
   padding: 2px 5px;
   border-radius: 10px;
   transition: 0.5s; /* Shorter transition duration */
@@ -176,10 +176,78 @@ code {
 
 .home-divs{
   border: 1px white solid;
-  background: rgba(255, 255, 255, 0.11);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   border-radius: 16px;
   width: 25%;
   height: 50%;
 }
 
+
+
+
+
+
+
+
+
+
+/* Projects.css */
+
+.project-boxes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.project-box {
+  width: 25%;
+  padding: 20px;
+  margin: 20px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.project-box img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.project-box h2 {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.project-box p {
+  font-size: 1rem;
+  color: white;
+}
+
+
+
+.pay-btn{
+  background: black;
+  border: white 1px solid;
+  font-size: 15px;
+  color: white;
+  padding: 6px 20px;
+  border-radius: 12px;
+  width: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  transition: 0.5s;
+}
+
+
+.pay-btn:hover {
+  background: #ffc908;
+  box-shadow: 0 0 15px #ffc908;
+  border:1px #ffc908 solid;
+  color: white !important;
+  cursor: pointer;
+}
 

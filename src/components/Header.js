@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import '../index.css'; // Import your CSS file
 
 function Header() {
+    const navigate = useNavigate();
   return (
     <header className="header-container">
         <div className='header-split'>

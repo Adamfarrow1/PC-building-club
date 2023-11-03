@@ -1,12 +1,13 @@
 import React, { useEffect, useRef } from 'react';
-
+import { useLocation } from 'react-router-dom';
 const Canvas = () => {
   const canvasRef = useRef(null);
   const mouse = useRef({ x: 0, y: 0 });
   const stars = useRef([]);
   let ctx;
 
-  var FPS = 1, // Frames per second
+
+  var FPS = 60, // Frames per second
       x = 200, // Number of stars
       connected = 0,
       md = 350,
@@ -48,6 +49,9 @@ const Canvas = () => {
     }
   };
 
+
+  const { innerWidth: width, innerHeight: height } = window;
+
   const start = () => {
     stars.current = [];
     for (let i = 0; i < x; i++) {
@@ -63,10 +67,19 @@ const Canvas = () => {
   };
 
   const draw = () => {
-    canvasRef.current.width = window.innerWidth;
-    canvasRef.current.height = window.innerHeight;
+
+    if (canvasRef.current) {
+      canvasRef.current.width = window.innerWidth;
+      canvasRef.current.height = window.innerHeight; // Cover the entire page height
+    }
+
+  
+    
     if (stars.current.length === 0) start();
-    ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    if (canvasRef.current) {
+      ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    }
+  
     ctx.globalAlpha = 1;
     for (let i = 0; i < stars.current.length; i++) {
       const s = stars.current[i];
@@ -144,22 +157,22 @@ const Canvas = () => {
       const s = stars.current[i];
       s.x += s.vx / s.fps;
       s.y += s.vy / s.fps;
-      if (s.x < 0 || s.x > canvasRef.current.width) s.vx = -s.vx;
-      if (s.y < 0 || s.y > canvasRef.current.height) s.vy = -s.vy;
+      if (s.x < 0 || s.x > window.innerWidth) s.vx = -s.vx;
+      if (s.y < 0 || s.y > window.innerHeight) s.vy = -s.vy;
     }
   };
 
-  const handleMouseMove = (e) => {
-    mouse.current.x = e.clientX;
-    mouse.current.y = e.clientY;
-  };
+  // const handleMouseMove = (e) => {
+  //   mouse.current.x = e.clientX;
+  //   mouse.current.y = e.clientY;
+  // };
 
-  useEffect(() => {
-    canvasRef.current.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      canvasRef.current.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
+  // useEffect(() => {
+  //   canvasRef.current.addEventListener('mousemove', handleMouseMove);
+  //   return () => {
+  //     canvasRef.current.removeEventListener('mousemove', handleMouseMove);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
@@ -207,14 +220,16 @@ const Canvas = () => {
   useEffect(() => {
     animate();
   }, []);
+  const location = useLocation(); // Get the current route location
 
+  const isProjectsPage = location.pathname === '/projects'; 
   const canvasStyle = {
     overflow: 'hidden',
     background: 'black',
-    position: 'absolute',
+    position: isProjectsPage ? 'fixed' : 'absolute', // Apply 'fixed' on Projects page
     zIndex: '-1',
     width: '100%',
-    height: '100vh',
+    height: '100%',
     backgroundColor: 'black',
   };
   return <canvas ref={canvasRef} style={canvasStyle} />;
