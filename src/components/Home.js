@@ -1,6 +1,7 @@
 import '../index.css'; // Import your CSS file
 import Header from './Header';
 import Canvas from './Canvas';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     return ( 
@@ -10,7 +11,8 @@ const Home = () => {
                 <div className='home-header-container'>
                     <div>
                         <p className='home-header'>Society of PC Building at UCF</p>
-                        <p className='text-center project-btn'>Projects</p>
+                        <p className='text-center project-btn'><Link to="/projects" className="text-center-white">Projects</Link></p>                        
+                        
                     </div>
                 
                 </div>
