@@ -2,6 +2,7 @@ import '../index.css'; // Import your CSS file
 import Header from './Header';
 import Canvas from './Canvas';
 import { Link, useNavigate } from 'react-router-dom';
+import Design from './particle-config/particle-config';
 
 const Home = () => {
     return ( 
@@ -41,7 +42,7 @@ const Home = () => {
                     </div>
 
                 </div>
-                <Canvas className='canvas'/>
+                <Design className='canvas'/>
             </div>
         </>
     );

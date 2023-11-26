@@ -1,6 +1,6 @@
 import Header from './Header';
 import Canvas from './Canvas';
-
+import Design from "./particle-config/particle-config";
 const Projects = () => {
 
 
@@ -52,7 +52,8 @@ const Projects = () => {
 
       return (
         <div className="projects-wrapper">
-          <Canvas />
+          {/* <Canvas /> */}
+          <Design></Design>
           <div className="content">
             <Header />
             <div className="home-header-container">

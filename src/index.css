@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: black;
+  background-color: rgb(26, 25, 25);
 }
 
 code {
@@ -23,6 +23,7 @@ code {
 
 .header-split{
   display: flex;
+
   justify-content: space-around;
   align-items: center;
 }
@@ -159,13 +160,20 @@ code {
 
 .canvas {
   overflow: hidden !important;
-  background: black;
+
   position: absolute;
   z-index: -1;
   width: 100%;
+
   height: 100vh;
-  background-color: black;
+
 }
+
+.w-full{
+  height: 100%;
+  width: 100%;
+}
+
 
 .centered-divs {
   display: flex;
@@ -229,7 +237,7 @@ code {
 
 
 .pay-btn{
-  background: black;
+  background: rgb(14, 14, 14);
   border: white 1px solid;
   font-size: 15px;
   color: white;
@@ -249,5 +257,10 @@ code {
   border:1px #ffc908 solid;
   color: white !important;
   cursor: pointer;
+}
+
+.text-center-white{
+  text-decoration: none;
+  color: white;
 }
 
