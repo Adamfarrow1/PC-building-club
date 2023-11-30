@@ -1,20 +1,17 @@
-import { useCallback } from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import { Engine, ISourceOptions } from "tsparticles-engine";
 import { loadPolygonMaskPlugin } from "tsparticles-plugin-polygon-mask";
-import logo from './Color_Gear_Logo-removebg-preview (1).svg'
 
-const Design = () => {
-    const particlesInit = useCallback(async (engine) => {
-        await loadFull(engine);
-        await loadPolygonMaskPlugin(engine);
+
+const Full_bg = () => {
+    const particlesInit2 = useCallback(async (engine2) => {
+        await loadFull(engine2);
+        await loadPolygonMaskPlugin(engine2);
       }, []);
 
-  const particlesLoaded = useCallback(async (container) => {
-    // await console.log(container);
-    // Listen for window resize events and update the scale
+  const particlesLoaded2 = useCallback(async (container) => {
     window.addEventListener("resize", updateScale);
     updateScale();
     // Cleanup the event listener on component unmount
@@ -23,33 +20,17 @@ const Design = () => {
     };
   }, []);
 
-  const [scale, setScale] = useState(1.4);
   const [dots, setDots] = useState(120);
-  const [radius, setRadius] = useState(120);
+  const updateScale = () =>{
+    if(window.innerWidth < 500) return setDots(50);
+    if(window.innerWidth < 800) return setDots(90);
 
-  const updateRadius = () =>{
-    if(window.innerWidth < 800) return setRadius(60);
-    if(window.innerWidth < 800) return setRadius(90);
-    
-    return setRadius(250)
-  }
-
-  const updateDots = () =>{
-    if(window.innerWidth < 500) return setDots(40);
-    if(window.innerWidth < 800) return setDots(70);
     return setDots(120)
   }
 
-  const updateScale = () =>{
-    updateDots();
-    updateRadius();
-    if(window.innerWidth < 500) return setScale(.6);
-    if(window.innerWidth < 800) return setScale(.9);
-
-    return setScale(1.4)
-  }
-  const options = {
+  const options2 = {
     name: "Polygon Mask",
+    fullScreen: { enable: true },
     interactivity: {
       events: {
         onClick: {
@@ -167,12 +148,12 @@ const Design = () => {
       enable: true,
       move: {
         
-        radius: radius
+        radius: 10
         
       },
-      scale: scale,
+      scale: .6,
       type: "inline",
-      url: logo,
+
     },
     background: {
         color: {
@@ -192,14 +173,14 @@ const Design = () => {
           },
           opacity: 1,
         },
-        fullScreen:{enable:false,zIndex:-1},
+        fullScreen:{enable:true,zIndex:-1},
         enable: false,
       },
       defaultThemes: {},
       delay: 0,
       fullScreen: {
-        enable: false,
-        zIndex: -1,
+        enable: true,
+        zIndex: 1,
       },
       detectRetina: false,
       duration: 0,
@@ -326,23 +307,24 @@ const Design = () => {
           },
         },
       },
-      fullScreen: { enable: false }
   };
   return (
-    <div className="w-full">
-      <Particles
-        className="w-full h-screen"
-        id="tsparticles"
-        init={particlesInit}
-        loaded={particlesLoaded}
-        options={options}
-        
-      />
-      </div>
+        <div className="w-full-bg">
+          <Particles
+            className="w-full-bg h-screen"
+            id="tsparticles2"
+            init={particlesInit2}
+            loaded={particlesLoaded2}
+            options={options2}
+            
+          />
+        </div>
+
+
   );
 };
 
-export default Design;
+export default Full_bg;
 
 // mode: "grab",
 // grab: {

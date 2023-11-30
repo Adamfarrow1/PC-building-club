@@ -1,69 +1,65 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Header from './Header';
 import Full_bg from "./particle-config/fullbg";
-import AOS from 'aos';
 
 const GET_PRODUCTS_QUERY = gql`
-  query Projects {
-    projects {
+query Events {
+    events  {
       createdAt
       id
-      projectDescription
-      projectImage {
-        id
-        fileName
-      }
-      projectTitle
+      when
+      description
       publishedAt
       updatedAt
+      title
     }
-  }  
+  }
+  
 `;
 
-const Projects = () => {
+const Events = () => {
   const { loading, error, data } = useQuery(GET_PRODUCTS_QUERY);
-  useEffect(() => {
-    AOS.init({
-      offset: 0, // Adjust the offset as needed
-    }); // Initialize AOS
-    AOS.refresh();
-  }, []);
-
+    console.log(data);
   if (loading) {
     return <p>Loading...</p>;
   }
- 
+
   if (error) {
+    // Check if the error message is available in the error object
     const errorMessage = error.message || 'An error occurred';
+
+    // Render an error message component or an appropriate UI
     return <p>Error: {errorMessage}</p>;
   }
 
   return (
-    <div className="projects-wrapper" >
+    <div className="projects-wrapper">
       <div className="canvas">
         <Full_bg />
       </div>
-      <div className="content" >
+      <div className="content">
         <Header />
         <div className="home-header-container" data-aos="fade-in" data-aos-duration="2000" data-aos-delay={250}>
           <div>
-            <p className="home-header">Projects</p>
+            <p className="home-header">Events</p>
           </div>
         </div>
         <div className="project-boxes-container" data-aos="fade-in" data-aos-duration="2000" data-aos-delay={250}>
-          {data && data.projects.map((project, index) => (
-            <div className="project-box" key={index} >
+          {data && data.events.map((event, index) => (
+            <div className="project-box" key={index}>
               {/* <img src={project.projectImage.fileName} alt={project.projectTitle} /> */}
-              <p className='project-title'>{project.projectTitle}</p>
-              <p>{project.projectDescription}</p>
+              <p className='project-title'>{event.title}</p>
+              <p>{event.when}</p>
+              <p>{event.description}</p>
+              
             </div>
           ))}
         </div>
+       
       </div>
     </div>
   );
 };
 
-export default Projects;
+export default Events;
