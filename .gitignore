@@ -7,8 +7,7 @@
 
 
 
-.env
-
+*.env
 
 
 # testing
