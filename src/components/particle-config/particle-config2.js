@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Particles from "react-particles";
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { Engine, ISourceOptions } from "tsparticles-engine";
 import { loadPolygonMaskPlugin } from "tsparticles-plugin-polygon-mask";
@@ -17,6 +17,7 @@ const Design2 = () => {
     window.addEventListener("resize", updateparticles);
     // Cleanup the event listener on component unmount
     return () => {
+      if(window.innerHeight > 500) return
       window.removeEventListener("resize", updateparticles);
     };
   }, []);

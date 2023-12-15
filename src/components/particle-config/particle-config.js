@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useState } from "react";
-import Particles from "react-particles";
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { Engine, ISourceOptions } from "tsparticles-engine";
 import { loadPolygonMaskPlugin } from "tsparticles-plugin-polygon-mask";
@@ -19,6 +19,7 @@ const Design = () => {
     updateScale();
     // Cleanup the event listener on component unmount
     return () => {
+      if(window.innerHeight > 500) return
       window.removeEventListener("resize", updateScale);
     };
   }, []);
@@ -35,7 +36,7 @@ const Design = () => {
   }
 
   const updateDots = () =>{
-    if(window.innerWidth < 500) return setDots(40);
+    if(window.innerWidth < 500) return setDots(20);
     if(window.innerWidth < 800) return setDots(70);
     return setDots(120)
   }
@@ -149,8 +150,8 @@ const Design = () => {
         type: "circle"
       },
       size: {
-        value: 1, // Adjust the particle size as needed
-        random: true, // Allow for some randomness in particle size
+        value: 2,
+        random: true,
       },
     },
     polygon: {

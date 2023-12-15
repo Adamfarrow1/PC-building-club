@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { slide as Menu } from 'react-burger-menu';
 import '../index.css'; // Import your CSS file
-import img from '../img/icons8-menu.svg'
+import img from '../img/icons8-instagram.svg'
 
 const styles = {
     bmBurgerButton: {
@@ -109,6 +109,11 @@ function Header() {
                             </li>
                             <li className="nav-item" data-aos={isHomePage ? "fade-in" : ""} data-aos-duration="2000" data-aos-delay="2100">
                                 <Link to="/pay-dues" className="nav-link">Pay Dues</Link>
+                            </li>
+                            <li data-aos={isHomePage ? "fade-in" : ""} data-aos-duration="2000" data-aos-delay="2400">
+                              <a href="https://instagram.com/spcbatucf">
+                              <img src={img} className='header-img nav-item' alt="" />
+                              </a>
                             </li>
                         </ul>
                     </nav>

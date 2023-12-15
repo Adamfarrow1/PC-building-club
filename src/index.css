@@ -3,8 +3,6 @@ body {
 
 
     font-family: 'Roboto', sans-serif;
-
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: rgb(12, 12, 12);
@@ -28,6 +26,33 @@ code {
 
 }
 
+
+
+
+
+
+
+/* ask charles if its ok*/
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .header-split{
   display: flex;
   justify-content: space-around;
@@ -38,13 +63,15 @@ code {
 .nav {
   margin: 0;
   margin-left: auto;
-  max-width: 480px;
+
   
 }
+
 
 .nav-list {
   list-style: none;
   padding: 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
 }
@@ -56,11 +83,13 @@ code {
 
 .nav-item {
   display: inline;
+  align-self: center;
 }
 .nav-link {
   text-decoration: none;
   color: white;
   font-size: 18px;
+  
   margin: 0 30px;
   transition: border-bottom 0.2s ease-in; /* Adjust the duration and timing function as needed */
   border-bottom: 2px solid transparent; /* Add a transparent border by default */
@@ -68,6 +97,15 @@ code {
 
 .nav-link:hover {
   border-bottom: 2px solid #fff;
+}
+
+#tsparticles {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -299,6 +337,7 @@ code {
   border: 1px white solid;
   display: flex;
   flex-wrap: wrap;
+  align-self: center;
   justify-content: space-around;
   align-items: center;
   border-radius: 16px;
@@ -437,6 +476,7 @@ code {
   display: flex;
   margin-bottom: 40px;
   width: 400px;
+  font-size: 20px;
   align-items: center;
   justify-content: space-between;
 }
@@ -494,4 +534,18 @@ code {
   color: white;
   display: flex;
   justify-content: space-around;
+}
+
+
+.footer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.header-img{
+  width: 45px;
+  height: 45px;
 }

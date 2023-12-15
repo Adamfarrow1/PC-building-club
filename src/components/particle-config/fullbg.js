@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import Particles from "react-particles";
+import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import { Engine, ISourceOptions } from "tsparticles-engine";
 import { loadPolygonMaskPlugin } from "tsparticles-plugin-polygon-mask";
@@ -12,10 +12,13 @@ const Full_bg = () => {
       }, []);
 
   const particlesLoaded2 = useCallback(async (container) => {
+   
     window.addEventListener("resize", updateScale);
     updateScale();
+    
     // Cleanup the event listener on component unmount
     return () => {
+      if(window.innerHeight > 500) return
       window.removeEventListener("resize", updateScale);
     };
   }, []);

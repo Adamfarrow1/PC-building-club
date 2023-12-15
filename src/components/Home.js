@@ -7,6 +7,11 @@ import styled from 'styled-components';
 import { SlArrowDown } from 'react-icons/sl';
 import img from '../img/icons8-instagram.svg'
 import { Link } from 'react-router-dom';
+import ScrollToTop from '../ScrollToTop';
+import '../cards.css'
+import calendar from '../img/calendar.jpg'
+import paypalIMG from '../img/paypal.jpg'
+import cpu from '../img/cpu.jpg';
 
 const StyledDiv = styled.div`
   align-items: center;
@@ -36,7 +41,8 @@ const Home = () => {
       <div className="home-container">
         <Design />
         <Header />
-        <div className="home-header-container" data-aos="zoom-in-up" data-aos-duration="2000" data-aos-delay="2500">
+        <ScrollToTop/>
+        <div className="home-header-container" data-aos="zoom-in-up" data-aos-duration="2000" data-aos-delay="2700">
           <Pulsating visible={true} color="#ffc90891">
             <StyledDiv onClick={handleScrollToBottom} color="#ffc908">
               {' '}
@@ -49,41 +55,46 @@ const Home = () => {
       
       <div
         className="home-content centered-divs" id='bottomAnchor'>
-            
-        <div className="home-divs" >
-          <p className="text">Projects</p>
-          <p className="text">stuff here</p>
-          <div>
-          <Link to='/projects' className="link-dom"><p className="text-center project-btn">Projects</p></Link>
-            
+        <Link to='/projects' className="home-link">
+        <div className="card" style={{ backgroundImage: `url(${cpu})` }} data-aos="fade-in" data-aos-duration="2000" data-aos-delay="200">
+          <div className='card-content'>
+            <p className="card-title">Projects</p>
+            <p className="card-body">View our clubs projects</p>
           </div>
         </div>
-        <div className="home-divs" >
-          <p className="text">Upcoming events</p>
-          <p className="text">stuff here</p>
-          <div>
-            <Link to='/events' className="link-dom"><p className="text-center project-btn">Learn More</p></Link>
-          </div>
-        
-        </div>
-        <div className="home-divs" >
-          <p className="text">Pay dues</p>
-          <p className="text">stuff here</p>
-          <div>
-          <Link to='/pay-dues' className="link-dom"><p className="text-center project-btn">Pay dues</p></Link>
-          </div>
-        </div>
-        <div className="insta-div" >
-          <p className="text">Stay connected and get the latest updates on Instagram!</p>
-          <div>
-          <a href="https://www.instagram.com/spcbatucf/" target="_blank" rel="noopener noreferrer">
-            <img className='insta-svg' src={img} alt="Instagram" />
-          </a>
+        </Link>
+        <Link to='/events' className="home-link">
+        <div
+          className="card"
+          style={{ backgroundImage: `url(${calendar})` }} // Assuming 'calendar' is a variable containing the image URL
+          data-aos="fade-in"
+          data-aos-duration="2000"
+          data-aos-delay="400"
+        >
+          <div className='card-content'>
+            <p className="card-title">Upcoming events</p>
+            <p className="card-body">View our upcoming events</p>
           </div>
         </div>
+        </Link>
+        <Link to='/pay-dues' className='home-link'>
+        <div
+          className="card"
+          style={{ backgroundImage: `url(${paypalIMG})` }} // Assuming 'calendar' is a variable containing the image URL
+          data-aos="fade-in"
+          data-aos-duration="2000"
+          data-aos-delay="500"
+        >
+          <div className='card-content'>
+            <p className="card-title">Pay dues</p>
+            <p className="card-body">Click here to pay your dues</p>
+
+          </div>
+        </div>
+        </Link>
         <Design2 />
       </div>
-  
+      
     </div>
   );
 };
